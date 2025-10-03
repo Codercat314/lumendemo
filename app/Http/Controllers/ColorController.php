@@ -22,8 +22,14 @@ class ColorController extends Controller {
     }
 
     function withParams(Request $request){
+        //ta in ruttparametrar
         $bakgrund = $request->route('back');
         $text=$request->route('front');
+
+        //om det finns gäller query parametrarna istället
+        $bakgrund=$request->get('back', $bakgrund);
+        $text=$request->get('front', $text);
+
         return View::make('farger', ['backcolor'=>$bakgrund,'textcolor'=>$text]);
     
     }
