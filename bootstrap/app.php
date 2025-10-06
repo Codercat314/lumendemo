@@ -92,7 +92,7 @@ $app->configure('view');
 |
 */
 $app->register(Illuminate\View\ViewServiceProvider::class);
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
