@@ -17,9 +17,7 @@ $router->get('/', function () use ($router) {
     return view("welcome");
 });
 
-$router->get('/{id:(?!farger$)}', function ($id) use ($router) {
-  return view("hello", ['namn'=>$id]);
-});
+
 
 //hantering av färger på webbsidan
 $router->get('/farger', 'ColorController@show');
@@ -27,7 +25,16 @@ $router->get('/farger/{back}[/{front}]', 'ColorController@withParams');
 $router->post('/farger', 'ColorController@post');
 
 //todo
-$router->get('/ToDo', 'TodoController@show');
-$router->post('/ToDo', 'TodoController@add');
-$router->delete('/ToDo', 'TodoController@remove');
-$router->put('/ToDo', 'TodoController@update');
+$router->get('/todo', 'ToDoController@show');
+$router->post('/todo', 'ToDoController@add');
+$router->delete('/todo', 'ToDoController@remove');
+$router->put('/todo', 'ToDoController@update');
+
+
+$router->get('/{id}', function ($id) use ($router) {
+  $reserverad=['todo', 'farger'];
+  if (in_array(strtolower($id), $reserverad)) {
+    return redirect('/' . strtolower($id));
+  }
+  return view("hello", ['namn'=>$id]);
+});

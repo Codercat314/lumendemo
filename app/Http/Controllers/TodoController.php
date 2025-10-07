@@ -26,8 +26,7 @@ class TodoController extends Controller {
 
         $this-> repo->add($uppgift);
 
-        $lista = $this->repo->all();
-        return View::make('todo', ['lista' => $lista]);
+        return redirect('/ToDo');
     }
     function remove(Request $request){
         //dd($request->all());
@@ -36,9 +35,7 @@ class TodoController extends Controller {
         $id=$request->request->get('uppgift');
         $this ->repo->delete($id);
 
-        $lista = $this->repo->all();
-        
-        return View::make('todo', ['lista' => $lista]);
+        return redirect('/ToDo');
     }
     function update(Request $request){
         $id = $request -> request -> get('uppgift');

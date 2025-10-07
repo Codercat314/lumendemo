@@ -72,7 +72,7 @@ $app->configure('view');
 | route or middleware that'll be assigned to some specific routes.
 |
 */
-
+$app->middleware([App\Http\Middleware\LowerCaseUrls::class]);
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);

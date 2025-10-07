@@ -3,5 +3,10 @@
         "id": 1,
         "text": "sitta",
         "done": false
+    },
+    "2": {
+        "id": 2,
+        "text": "klappa katt",
+        "done": true
     }
 }
