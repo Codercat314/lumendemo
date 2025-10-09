@@ -14,6 +14,9 @@
 <body>
     <h1>Användare</h1>
     <form method="post">
+        @if(isset($user))
+        <input type="hidden" name="id" value="{{$user->id}}">
+        @endif
         <label>namn:
 
             <input type="text" name="namn" placeholder="Ange namn" value="{{$user -> namn ?? ''}}">
@@ -24,6 +27,9 @@
         </label>
         <input type="submit" value="spara">
         <input type="reset" value="Ångra">
+        @if(isset($user))
+        <input type="submit" name="delete" value="ta bort">
+        @endif
     </form>
     @if (!empty($lista))
     <h2>Användarlista</h2>
