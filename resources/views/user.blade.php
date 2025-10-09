@@ -22,9 +22,10 @@
             <input type="text" name="namn" placeholder="Ange namn" value="{{$user -> namn ?? ''}}">
         </label>
         <label>Epost:
-            <input type="email" name="epost" placeholder="Ange epost" value="{{$user -> epost ?? ''}}">
+            <input type="email" name="epost" required placeholder="Ange epost" value="{{$user -> epost ?? ''}}">
             
         </label>
+        <label>Lösenord<input type="password" name="losenord" placeholder="Ange lösenord" required></label>
         <input type="submit" value="spara">
         <input type="reset" value="Ångra">
         @if(isset($user))

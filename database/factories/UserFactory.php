@@ -24,7 +24,8 @@ class UserFactory extends Factory
         return [
             'namn' => $this->faker->name,
             'epost' => $this->faker->unique()->safeEmail,
-            'id'=>0
+            'id'=>0,
+            'losenord'=>''
         ];
     }
 }
