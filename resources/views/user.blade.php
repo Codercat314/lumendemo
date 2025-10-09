@@ -25,5 +25,17 @@
         <input type="submit" value="spara">
         <input type="reset" value="Ångra">
     </form>
+    @if (!empty($lista))
+    <h2>Användarlista</h2>
+    <ul>
+        @foreach($lista as $u)
+        <li>
+            {{$u->id}}
+            <a href="/anvandare/{{$u->id}}">{{$u->namn}}</a>
+            {{$u->epost}}
+        </li>
+        @endforeach
+    </ul>
+    @endif
 </body>
 </html>
