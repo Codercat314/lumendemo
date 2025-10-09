@@ -30,6 +30,10 @@ $router->post('/todo', 'ToDoController@add');
 $router->delete('/todo', 'ToDoController@remove');
 $router->put('/todo', 'ToDoController@update');
 
+//användare
+$router->get('/anvandare', 'UserController@show');
+$router->post('/anvandare', 'UserController@add');
+
 
 $router->get('/{id}', function ($id) use ($router) {
   $reserverad=['todo', 'farger'];
