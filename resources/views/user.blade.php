@@ -26,6 +26,12 @@
             
         </label>
         <label>Lösenord<input type="password" name="losenord" placeholder="Ange lösenord" required></label>
+        @if(isset($user))
+        <label>
+            <input type="hidden" name="admin" value="0">
+            <input type="checkbox" name="admin" value="1" {{$user->admin ? 'checked' : ''}}>Administratör
+        </label>
+        @endif
         <input type="submit" value="spara">
         <input type="reset" value="Ångra">
         @if(isset($user))

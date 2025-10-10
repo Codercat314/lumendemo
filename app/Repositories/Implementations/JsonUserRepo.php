@@ -32,6 +32,9 @@ class JsonUserRepo implements UserRepo {
             $ids=array_keys($this->data);
             $nextId=empty($ids) ? 1 : max($ids) + 1;
             $user ->id=$nextId;
+            if ($user->id===1) {
+                $user-> admin = 1;
+            }
         }
         $this->data[$user->id]=$user;
         $this->file->write($this->data);
