@@ -36,6 +36,10 @@ $router->get('/anvandare/{id}', 'UserController@showUser');
 $router->post('/anvandare/{id}', 'UserController@modifyUser');
 $router->post('/anvandare', 'UserController@add');
 
+//inloggning
+$router->get('/login', 'LoginController@show');
+$router->post('/login', 'LoginController@login');
+
 
 $router->get('/{id}', function ($id) use ($router) {
   $reserverad=['todo', 'farger'];

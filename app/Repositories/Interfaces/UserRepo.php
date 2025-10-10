@@ -15,4 +15,7 @@ interface UserRepo {
     public function update(User $User):void;
 
     public function delete(string $id):void;
+    
+    public function getUserByEmail(string $email):?User;
+    
 }
