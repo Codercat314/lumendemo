@@ -31,10 +31,13 @@ $router->delete('/todo', 'ToDoController@remove');
 $router->put('/todo', 'ToDoController@update');
 
 //användare
-$router->get('/anvandare', 'UserController@show');
-$router->get('/anvandare/{id}', 'UserController@showUser');
-$router->post('/anvandare/{id}', 'UserController@modifyUser');
-$router->post('/anvandare', 'UserController@add');
+$router->group(['middleware'=>'auth.user'], function() use ($router) {
+
+  $router->get('/anvandare', 'UserController@show');
+  $router->get('/anvandare/{id}', 'UserController@showUser');
+  $router->post('/anvandare/{id}', 'UserController@modifyUser');
+  $router->post('/anvandare', 'UserController@add');
+});
 
 //inloggning
 $router->get('/login', 'LoginController@show');

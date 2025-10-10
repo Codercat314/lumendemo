@@ -75,15 +75,15 @@ $app->configure('session');
 */
 $app->middleware
 ([App\Http\Middleware\LowerCaseUrls::class,
-Illuminate\Session\Middleware\StartSession::class
+Illuminate\Session\Middleware\StartSession::class,
 ]);
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+     'auth.user' => App\Http\Middleware\AuthenticatedUser::class,
+ ]);
 
 /*
 |--------------------------------------------------------------------------
