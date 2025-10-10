@@ -13,9 +13,12 @@ public function __construct(private UserRepo $repo){
 
 }
 
-    function show(){
+    function show(Request $request){
         $lista=$this->repo->all();
-        return View::make('user', ['lista'=>$lista]);
+
+        //Hämta inloggad användare
+        $me = $request->user();
+        return View::make('user', ['lista'=>$lista, 'me'=>$me]);
     }
 
     function add(Request $request){

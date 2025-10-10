@@ -13,6 +13,7 @@
 </head>
 <body>
     <h1>Användare</h1>
+    @if($me -> admin)
     <form method="post">
         @if(isset($user))
         <input type="hidden" name="id" value="{{$user->id}}">
@@ -38,13 +39,18 @@
         <input type="submit" name="delete" value="ta bort">
         @endif
     </form>
+    @endif
     @if (!empty($lista))
     <h2>Användarlista</h2>
     <ul>
         @foreach($lista as $u)
         <li>
             {{$u->id}}
+            @if($me->admin)
             <a href="/anvandare/{{$u->id}}">{{$u->namn}}</a>
+            @else
+            {{$u->namn}}
+            @endif
             {{$u->epost}}
         </li>
         @endforeach
