@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Användare</h1>
-    @if($me -> admin)
+    @if($me -> admin || (isset($user) && $me->id==$user->id))
     <form method="post">
         @if(isset($user))
         <input type="hidden" name="id" value="{{$user->id}}">
@@ -27,7 +27,7 @@
             
         </label>
         <label>Lösenord<input type="password" name="losenord" placeholder="Ange lösenord" required></label>
-        @if(isset($user))
+        @if($me->admin && isset($user) && ($me->id!==$user->id)) 
         <label>
             <input type="hidden" name="admin" value="0">
             <input type="checkbox" name="admin" value="1" {{$user->admin ? 'checked' : ''}}>Administratör
@@ -35,18 +35,19 @@
         @endif
         <input type="submit" value="spara">
         <input type="reset" value="Ångra">
-        @if(isset($user))
+        @if($me->admin && isset($user) && ($me->id!==$user->id)) 
         <input type="submit" name="delete" value="ta bort">
         @endif
     </form>
     @endif
+   
     @if (!empty($lista))
     <h2>Användarlista</h2>
     <ul>
         @foreach($lista as $u)
         <li>
             {{$u->id}}
-            @if($me->admin)
+            @if($me->admin || $me->id==$u->id)
             <a href="/anvandare/{{$u->id}}">{{$u->namn}}</a>
             @else
             {{$u->namn}}
