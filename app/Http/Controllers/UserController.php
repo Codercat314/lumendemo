@@ -22,6 +22,11 @@ public function __construct(private UserRepo $repo){
     }
 
     function add(Request $request){
+        //bara admin ska kunna lägga till användare
+        $me=$request->user();
+        if (!$me->admin) {
+            return View::make('ajabaja');
+        }
         $user=User::factory() ->make($request->request->all());
         $this->repo->add($user);
         return redirect('/anvandare');
@@ -43,13 +48,29 @@ public function __construct(private UserRepo $repo){
     }
 
     public function modifyUser(Request $request){
+        //hämta inloggad admin
+        $me=$request->user();
+        
+        
         $id = $request->route('id');
-        if ($request->request->get('delete')) {
-            
+        if ($request->request->has('delete') && ($id==$me -> id || $me->admin)) {
+            return View::make('ajabaja');    
+        }
+
+        if ($id!=$request->request->get('id')) {
+            # code...
+            return View::make('ajabaja');
+        }
+        if ($request->request->has('delete')) {
+            # code...
             $this->repo->delete($id);
         }else{
+        
             $user=$this->repo->get($id);
             $user->fill($request->request->all());
+            if (!$me->admin) {
+                $user->admin=0;
+            }
             $this->repo->update($user);
         }
         return redirect('/anvandare');
