@@ -1,12 +1,12 @@
 {
-    "1": {
-        "id": 1,
-        "text": "sitta",
-        "done": false
-    },
     "2": {
         "id": 2,
         "text": "klappa katt",
+        "done": true
+    },
+    "3": {
+        "id": 3,
+        "text": "rastNu",
         "done": true
     }
 }
