@@ -17,19 +17,30 @@ class TodoApiController extends Controller {
     }
 
     public function get(Request $request) {
+        try {
+            $id = filter_var($request->route('id'), FILTER_VALIDATE_INT);
+            $item = $this->repo->get($id);
+            return response()->json(['todo' => $item]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
         $item=$this->repo->get($request->route('id'));
         return response()->json(['todo'=>$item]);
     }
     public function add(Request $request){
         //$new=$this->repo->get($request->route('new'));
-        
+        try {
         $text=$request-> request->get('uppgift');
         $uppgift = Uppgift::factory()->make(['text'=>$text, 'done'=>false]);
         
         $this-> repo->add($uppgift);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
         return response()->json(['add_funkar'=>$uppgift]);
     }
     public function update(Request $request){
+        try {
         $id = filter_var($request->route('id'), FILTER_VALIDATE_INT);
 
         $uppgift= $this->repo->get($id);
@@ -38,7 +49,9 @@ class TodoApiController extends Controller {
         $uppgift->done = $request->input('done', $uppgift->done);
 
         $this->repo->update($uppgift);
-
+            } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
         return response()->json(['todo'=>$uppgift]);
 
         $idHel=$this->repo->get($request->route('id'));
@@ -56,17 +69,25 @@ class TodoApiController extends Controller {
         View::make('todo', ['lista' => $lista]);
     }
     public function check(Request $request){
+        try {
         $id = filter_var($request->route('id'), FILTER_VALIDATE_INT);
          $uppgift= $this->repo->get($id);
 
          $uppgift->done = !$uppgift->done;
          
          $this->repo->update($uppgift);
+         } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
          return response()->json(['todo' => $uppgift]);
     }
     public function remove(Request $request){
+        try {
         $id = filter_var($request->input('id'), FILTER_VALIDATE_INT);
         $this->repo->delete($id);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 401);
+        }
         return response()->json(null,204);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class uppgift extends Model {
     use HasFactory;
 
+    protected $table = 'todos';
     protected $fillable=['id', 'text', 'done'];
 
     protected $primaryKey='id';
