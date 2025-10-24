@@ -37,7 +37,7 @@ public function __construct(private UserRepo $repo){
         $user=$this->repo->get($id);
          //Hämta inloggad användare
         $me = $request->user();
-        if (($me->admin || isset($user)) && $user->id==$me->id) {
+        if (($me->admin || isset($user)) || $user->id==$me->id) {
             return View::make('user', ['user'=>$user, 'me'=>$me]);
             # code...
         } else {
@@ -53,7 +53,7 @@ public function __construct(private UserRepo $repo){
         
         
         $id = $request->route('id');
-        if ($request->request->has('delete') && ($id==$me -> id || $me->admin)) {
+        if ($request->request->has('delete') && ($id==$me -> id || !$me->admin)) {
             return View::make('ajabaja');    
         }
 
