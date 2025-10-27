@@ -15,8 +15,8 @@ $router->delete('/todo','TodoApiController@remove');
 
 //användare
 $router->get('/anvandare','UserApiController@all');
-$router->get('/anvandare/{id}','UserApiController@get');
 $router->post('/anvandare','UserApiController@add');
+$router->get('/anvandare/{id}','UserApiController@get');
 $router->put('/anvandare/{id}','UserApiController@update');
-
 $router->delete('/anvandare','UserApiController@remove');
+
