@@ -29,7 +29,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'losenord',
+        'losenord', 'refresh_token',
+        'refresh_token_expires_at'
     ];
 
     public function setLosenordAttribute($value){

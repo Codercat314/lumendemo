@@ -131,6 +131,7 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'Firebase\\JWT\\' => 13,
             'FastRoute\\' => 10,
             'Faker\\' => 6,
         ),
@@ -428,6 +429,10 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -495,6 +500,8 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'App\\Events\\Event' => __DIR__ . '/../..' . '/app/Events/Event.php',
         'App\\Events\\ExampleEvent' => __DIR__ . '/../..' . '/app/Events/ExampleEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Api\\V1\\TodoApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/TodoApiController.php',
+        'App\\Http\\Controllers\\Api\\V1\\UserApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/V1/UserApiController.php',
         'App\\Http\\Controllers\\ColorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ColorController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExampleController.php',
@@ -502,6 +509,7 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'App\\Http\\Controllers\\TodoController' => __DIR__ . '/../..' . '/app/Http/Controllers/TodoController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\AuthenticatedUser' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthenticatedUser.php',
         'App\\Http\\Middleware\\ExampleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/ExampleMiddleware.php',
         'App\\Http\\Middleware\\LowerCaseUrls' => __DIR__ . '/../..' . '/app/Http/Middleware/LowerCaseUrls.php',
         'App\\Jobs\\ExampleJob' => __DIR__ . '/../..' . '/app/Jobs/ExampleJob.php',
@@ -512,10 +520,13 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Repositories\\Implementations\\DbUppgiftRepo' => __DIR__ . '/../..' . '/app/Repositories/Implementations/DbUppgiftRepo.php',
+        'App\\Repositories\\Implementations\\DbUserRepo' => __DIR__ . '/../..' . '/app/Repositories/Implementations/DbUserRepo.php',
         'App\\Repositories\\Implementations\\JsonUppgiftRepo' => __DIR__ . '/../..' . '/app/Repositories/Implementations/JsonUppgiftRepo.php',
         'App\\Repositories\\Implementations\\JsonUserRepo' => __DIR__ . '/../..' . '/app/Repositories/Implementations/JsonUserRepo.php',
         'App\\Repositories\\Interfaces\\UppgiftRepo' => __DIR__ . '/../..' . '/app/Repositories/Interfaces/UppgiftRepo.php',
         'App\\Repositories\\Interfaces\\UserRepo' => __DIR__ . '/../..' . '/app/Repositories/Interfaces/UserRepo.php',
+        'App\\Services\\AuthenticationService' => __DIR__ . '/../..' . '/app/Services/AuthenticationService.php',
         'App\\Storage\\JsonDbConnection' => __DIR__ . '/../..' . '/app/Storage/JsonDbConnection.php',
         'App\\Storage\\JsonFileHandler' => __DIR__ . '/../..' . '/app/Storage/JsonFileHandler.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -631,6 +642,7 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'Database\\Factories\\UppgiftFactory' => __DIR__ . '/../..' . '/database/factories/UppgiftFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\UserSeeder' => __DIR__ . '/../..' . '/database/seeders/UserSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -1374,6 +1386,14 @@ class ComposerStaticInit43a8a6e444590514bb4b9f6a02112d0f
         'FastRoute\\RouteCollector' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteCollector.php',
         'FastRoute\\RouteParser' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser.php',
         'FastRoute\\RouteParser\\Std' => __DIR__ . '/..' . '/nikic/fast-route/src/RouteParser/Std.php',
+        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
+        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
+        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\JWTExceptionWithPayloadInterface' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWTExceptionWithPayloadInterface.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
+        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GrahamCampbell\\ResultType\\Error' => __DIR__ . '/..' . '/graham-campbell/result-type/src/Error.php',
