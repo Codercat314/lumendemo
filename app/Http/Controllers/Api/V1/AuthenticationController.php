@@ -15,6 +15,9 @@ class AuthenticationController extends Controller
 
     }
     public function login(Request $request){
+        try {
+            
+        
         $login=Login::create($request->only(['epost','losenord']));
         $user=$this->auth->attemptLogin($login);
 
@@ -33,8 +36,14 @@ class AuthenticationController extends Controller
             'token_type'=>'bearer',
             'expires_in'=>(int)env('JWT_TTL',900)
         ])->withCookie($cookie);
+    } catch (\Exception $e) {
+            return response()->json(['error'=> $e->getMessage()]);
+        }
     }
     public function refresh(Request $request) {
+        try {
+            //code...
+        
         $cookie = $request->cookie('refresh_token');
         if (!$cookie) {
             return response()->json(['error'=>'No refresh token']);
@@ -62,8 +71,14 @@ class AuthenticationController extends Controller
             'token_type'=>'bearer',
             'expires_in'=>(int)env('JWT_TTL',900)
         ])->withCookie($cookie);
+         } catch (\Exception $e) {
+            return response()->json(['error'=> $e->getMessage()]);
+        }
     }
     public function logout(Request $request){
+        try {
+            //code...
+        
         $cookie = $request ->cookie('refresh_token');
         if ($cookie) {
             $user=$this->auth->validateRefreshTokenAndGetUser($cookie);
@@ -76,5 +91,10 @@ class AuthenticationController extends Controller
                 'refresh_token', '', -1,"/refresh", null, false, true
             );
             return response()->json(['logged out'=>true])->withCookie($clear);
+
     }
+    catch (\Exception $e) {
+        return response()->json(['error'=> $e->getMessage()]);
+    } 
+}
 }
