@@ -43,6 +43,8 @@ $router->group(['middleware'=>'auth.user'], function() use ($router) {
 $router->get('/login', 'LoginController@show');
 $router->post('/login', 'LoginController@login');
 
+$router->get('/register', 'RegisterController@show');
+$router->post('/register', 'RegisterController@register');
 
 $router->get('/{id}', function ($id) use ($router) {
   $reserverad=['todo', 'farger'];
