@@ -26,7 +26,9 @@
         <label>
             Lösenord
             <input type="password" placeholder="Ange lösenord" name="losenord">
+
         </label>
+        
         <input type="submit" value="Logga in">
     </form>
 </body>

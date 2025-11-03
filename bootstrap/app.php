@@ -84,6 +84,7 @@ Illuminate\Session\Middleware\StartSession::class,
 $app->routeMiddleware([
      'auth.user' => App\Http\Middleware\AuthenticatedUser::class,
  ]);
+ $app->routeMiddleware(['api.auth'=>App\Http\Middleware\ApiJwtAuthentication::class]);
 
 /*
 |--------------------------------------------------------------------------

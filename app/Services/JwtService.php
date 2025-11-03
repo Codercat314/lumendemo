@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Firebase\JWT\Key;
 use Firebase\JWT\JWT;
 
 class JwtService {
